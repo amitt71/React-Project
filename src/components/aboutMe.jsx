@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import photo from "../images/Amit.jpg";
+import "aos/dist/aos.css";
 import "../css/style.css";
 import "../fonts/icomoon/style.css";
-import photo from "../images/Amit.jpg";
+
 const AboutMe = () => {
+  useEffect(() => {
+    AOS.init();
+  });
   return (
-    <div class="row align-items-center speaker">
-      <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
-        <img src={photo} alt="Amit" class="img-fluid" />
+    <div className="row align-items-center speaker">
+      <div
+        className="col-lg-6 mb-5 mb-lg-0"
+        data-aos="fade"
+        data-aos-delay="100"
+      >
+        <img
+          src={photo}
+          alt="Amit"
+          className="img-fluid"
+          style={{ marginLeft: "50px", marginTop: "50px" }}
+        />
       </div>
-      <div class="col-lg-6 ml-auto">
-        <h2 class="names" data-aos="fade-right" data-aos-delay="200">
+      <div className="col-lg-6 ml-auto">
+        <h2 className="names" data-aos="fade-right" data-aos-delay="200">
           Amit Turgeman
         </h2>
         <div class="bio pl-lg-5">
@@ -25,7 +40,7 @@ const AboutMe = () => {
             A little bit about myself.
           </p>
           <p data-aos="fade-right" data-aos-delay="500">
-            Follow Amit &mdash;
+            Follow me &mdash;
             <a href="https://www.facebook.com/amit.turgeman.9" class="p-2">
               <span class="icon-facebook"></span>
             </a>

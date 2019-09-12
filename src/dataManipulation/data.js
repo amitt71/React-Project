@@ -4,8 +4,8 @@ export const initPie = () => {
     datasets: [
       {
         data: [1, 2, 1],
-        backgroundColor: ["#f02652", "#1486f7", "#AB29B5"],
-        hoverBackgroundColor: ["#f02652", "#1486f7", "#AB29B5"]
+        backgroundColor: ["#FF8E53", "#6bfef7", "#FE6B8B"],
+        hoverBackgroundColor: ["#FF8E53", "#6bfef7", "#FE6B8B"]
       }
     ]
   };

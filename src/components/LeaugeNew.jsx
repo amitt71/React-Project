@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import CircleLoader from "react-spinners/CircleLoader";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Chart from "./chart";
@@ -9,6 +10,7 @@ import { initPie, normalPredictVector } from "../dataManipulation/data";
 import { buttonPredictStyle } from "./../dataManipulation/style/buttonStyle";
 import useGridStyles from "./grid";
 import "../css/bootstrap/bootstrap-grid.css";
+import { css } from "@emotion/core";
 
 const LeaugeNew = props => {
   // params : select {HomeTeam : id/name, AwayTeam : id/name}
@@ -18,6 +20,13 @@ const LeaugeNew = props => {
   const [entireData, setEntireData] = useState(initPie());
   const [homeTeam, setHomeTeam] = useState("");
   const [awayTeam, setAwayTeam] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+  `;
 
   const handleHomeTeamChange = e => {
     setHomeTeam(e.target.value);
@@ -60,12 +69,12 @@ const LeaugeNew = props => {
   return (
     <div className="container">
       <div className={gridClasses.root}>
-        <Grid container spacing={1}>
-          <Grid item xs={0}>
-            <Paper className={gridClasses.paper}>
+        <Grid container spacing={0}>
+          <Grid item xs={4}>
+            <Paper className={gridClasses.paper} style={{ marginLeft: "50px" }}>
               <img
                 style={{
-                  width: "1000px",
+                  width: "1050px",
                   height: "380px"
                 }}
                 src={photo}
@@ -108,7 +117,6 @@ const LeaugeNew = props => {
           </div>
         </div>
       </div>
-      {/* </div> */}
       <Chart
         entireData={entireData}
         predict={data}
