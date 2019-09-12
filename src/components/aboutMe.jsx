@@ -1,14 +1,7 @@
 import React, { useEffect } from "react";
-import AOS from "aos";
 import photo from "../images/Amit.jpg";
-import "aos/dist/aos.css";
-import "../css/style.css";
-import "../fonts/icomoon/style.css";
 
 const AboutMe = () => {
-  useEffect(() => {
-    AOS.init();
-  });
   return (
     <div className="row align-items-center speaker">
       <div

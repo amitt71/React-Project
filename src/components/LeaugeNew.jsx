@@ -20,7 +20,7 @@ const LeaugeNew = props => {
   const [entireData, setEntireData] = useState(initPie());
   const [homeTeam, setHomeTeam] = useState("");
   const [awayTeam, setAwayTeam] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const override = css`
     display: block;
@@ -44,6 +44,7 @@ const LeaugeNew = props => {
   };
 
   async function handlePredict(homeTeam, awayTeam) {
+    setLoading(true);
     const new_url = `${url}/${homeTeam}/${awayTeam}`;
     const { data } = await axios.get(new_url);
 
@@ -56,6 +57,7 @@ const LeaugeNew = props => {
     handleDataChange(predcitResult);
     const updateDatasets = [...entireData.datasets];
     updateDatasets[0].data = predcitResult;
+    setLoading(false);
     handleEntireData({ labels: entireData.labels, datasets: updateDatasets });
   }
 
@@ -112,11 +114,21 @@ const LeaugeNew = props => {
                     ></CustomButton>
                   </Paper>
                 </Grid>
+                <div className="sweet-loading">
+                  <CircleLoader
+                    css={override}
+                    sizeUnit={"px"}
+                    size={50}
+                    color={"#ff5733"}
+                    loading={loading}
+                  />
+                </div>
               </Grid>
             </div>
           </div>
         </div>
       </div>
+
       <Chart
         entireData={entireData}
         predict={data}

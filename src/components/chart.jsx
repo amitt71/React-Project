@@ -15,15 +15,6 @@ const Chart = props => {
     setRedarw(sholudDraw);
     setLocalPredict(entireData.datasets[0].data);
   }, [entireData.datasets, localPredict]);
-  // const newData = canvas => {
-  //   const ctx = canvas.getContext("2d");
-  //   const gradient = ctx.createLinearGradient(0, 0, 100, 0);
-  //   const updateData = { ...data };
-  //   updateData.datasets[0].backgroundColor = gradient;
-  //   return updateData;
-  // };
-
-  //  console.log(pieChart.current);
 
   return (
     <Pie

@@ -26,15 +26,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="sweet-loading">
-        <CircleLoader
-          css={override}
-          sizeUnit={"px"}
-          size={150}
-          color={"#ff5733"}
-          loading={loading}
-        />
-      </div>
     </div>
   );
 };

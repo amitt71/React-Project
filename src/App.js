@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
+import AOS from "aos";
 import Nav from "./components/nav";
 import Home from "./components/home";
 import England from "./components/england";
@@ -8,8 +9,14 @@ import Italy from "./components/italy";
 import Germany from "./components/germany";
 import AboutMe from "./components/aboutMe";
 import "materialize-css/dist/css/materialize.min.css";
+import "aos/dist/aos.css";
+import "./css/style.css";
+import "./fonts/icomoon/style.css";
 
 function App() {
+  useEffect(() => {
+    AOS.init();
+  });
   return (
     <Switch>
       <React.Fragment>
@@ -21,7 +28,7 @@ function App() {
         <Route path="/italy" component={Italy} />
         <Route path="/germany" component={Germany} />
         <Route path="/aboutMe" component={AboutMe} />
-        <Redirect from={"/"} exact to="/england" />
+        <Redirect from={"/"} exact to="/home" />
       </React.Fragment>
     </Switch>
   );
