@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/style.css";
+import "../fonts/icomoon/style.css";
 import photo from "../images/Amit.jpg";
 const AboutMe = () => {
   return (
@@ -13,11 +14,11 @@ const AboutMe = () => {
         </h2>
         <div class="bio pl-lg-5">
           <span
-            class="text-uppercase text-primary d-block mb-3"
+            class=" text-primary d-block mb-3"
             data-aos="fade-right"
             data-aos-delay="300"
           >
-            Web Designer
+            Looking for a job
           </span>
           <p class="mb-4" data-aos="fade-right" data-aos-delay="400">
             {" "}

@@ -21,7 +21,7 @@ function App() {
         <Route path="/italy" component={Italy} />
         <Route path="/germany" component={Germany} />
         <Route path="/aboutMe" component={AboutMe} />
-        <Redirect from={"/"} exact to="/england" />
+        <Redirect from={"/"} exact to="/home" />
       </React.Fragment>
     </Switch>
   );
