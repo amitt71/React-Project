@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import photo from "../images/Amit.jpg";
 
 const AboutMe = () => {
@@ -20,28 +20,28 @@ const AboutMe = () => {
         <h2 className="names" data-aos="fade-right" data-aos-delay="200">
           Amit Turgeman
         </h2>
-        <div class="bio pl-lg-5">
+        <div className="bio pl-lg-5">
           <span
-            class=" text-primary d-block mb-3"
+            className=" text-primary d-block mb-3"
             data-aos="fade-right"
             data-aos-delay="300"
           >
             Looking for a job
           </span>
-          <p class="mb-4" data-aos="fade-right" data-aos-delay="400">
+          <p className="mb-4" data-aos="fade-right" data-aos-delay="400">
             {" "}
             A little bit about myself.
           </p>
           <p data-aos="fade-right" data-aos-delay="500">
             Follow me &mdash;
             <a href="https://www.facebook.com/amit.turgeman.9" class="p-2">
-              <span class="icon-facebook"></span>
+              <span className="icon-facebook"></span>
             </a>
             <a href="https://twitter.com/turgrman" class="p-2">
-              <span class="icon-twitter"></span>
+              <span className="icon-twitter"></span>
             </a>
             <a href="https://github.com/amitt71" class="p-2">
-              <span class="icon-github"></span>
+              <span className="icon-github"></span>
             </a>
           </p>
         </div>

@@ -20,6 +20,18 @@ const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120
+  },
+  hoverAway: {
+    "&:hover": {
+      backgroundColor: "#FE6B8B",
+      cursor: "pointer"
+    }
+  },
+  hoverHome: {
+    "&:hover": {
+      backgroundColor: "#FF8E53",
+      cursor: "pointer"
+    }
   }
 }));
 
@@ -84,7 +96,11 @@ const DialogSelect = props => {
               >
                 {teams.map(team => {
                   return (
-                    <option key={`${team}_H`} value={`${team}`}>
+                    <option
+                      className={classes.hoverHome}
+                      key={`${team}_H`}
+                      value={`${team}`}
+                    >
                       {team}
                     </option>
                   );
@@ -102,7 +118,11 @@ const DialogSelect = props => {
               >
                 {teams.map(team => {
                   return (
-                    <option key={`${team}_A`} value={`${team}`}>
+                    <option
+                      className={classes.hoverAway}
+                      key={`${team}_A`}
+                      value={`${team}`}
+                    >
                       {team}
                     </option>
                   );

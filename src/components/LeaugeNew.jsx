@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import CircleLoader from "react-spinners/CircleLoader";
 import Paper from "@material-ui/core/Paper";
@@ -27,13 +27,6 @@ const LeaugeNew = props => {
     margin: 0 auto;
     border-color: red;
   `;
-
-  const handleHomeTeamChange = e => {
-    setHomeTeam(e.target.value);
-  };
-  const handleAwayTeamChange = e => {
-    setAwayTeam(e.target.value);
-  };
 
   const handleDataChange = newData => {
     setData(newData);
