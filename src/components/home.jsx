@@ -12,8 +12,15 @@ const Home = () => {
       <div className=" site-hero">
         <div className="container">
           <div className="row align-items-center">
-            <h1 data-aos="fade-up" data-aos-delay="10">
-              Welcome to my React Application. Server side not deployed yet.
+            <h1
+              data-aos="fade-up"
+              data-aos-delay="10"
+              style={{
+                "white-space": "pre-wrap"
+              }}
+            >
+              {`Welcome to my React Application. 
+               \nServer side not deployed yet.`}
             </h1>
           </div>
         </div>
