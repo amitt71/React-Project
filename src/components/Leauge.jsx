@@ -65,8 +65,6 @@ const Leauge = props => {
   }
 
   const validateTeamSelection = (homeTeam, awayTeam) => {
-    console.log(homeTeam);
-    console.log(awayTeam);
     if (homeTeam === "")
       if (awayTeam === "") return toast("You must choose home & away teams.");
       else {
