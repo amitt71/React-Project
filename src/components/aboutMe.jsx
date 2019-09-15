@@ -34,13 +34,13 @@ const AboutMe = () => {
           </p>
           <p data-aos="fade-right" data-aos-delay="500">
             Follow me &mdash;
-            <a href="https://www.facebook.com/amit.turgeman.9" class="p-2">
+            <a href="https://www.facebook.com/amit.turgeman.9" className="p-2">
               <span className="icon-facebook"></span>
             </a>
-            <a href="https://twitter.com/turgrman" class="p-2">
+            <a href="https://twitter.com/turgrman" className="p-2">
               <span className="icon-twitter"></span>
             </a>
-            <a href="https://github.com/amitt71" class="p-2">
+            <a href="https://github.com/amitt71" className="p-2">
               <span className="icon-github"></span>
             </a>
           </p>
