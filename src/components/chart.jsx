@@ -3,7 +3,7 @@ import { Pie } from "react-chartjs-2";
 
 const Chart = props => {
   const { entireData, predict } = props;
-  const [data, setData] = useState(entireData);
+  const [data] = useState(entireData);
   const [localPredict, setLocalPredict] = useState(predict);
   const [draw, setRedarw] = useState(false);
 

@@ -1,18 +1,19 @@
 import React from "react";
-import LeaugeNew from "./LeaugeNew";
+import Leauge from "./Leauge";
 import { bundesliga } from "../dataManipulation/leaugesTeam";
 import { url } from "../dataManipulation/data";
 import photo from "../images/leauges/germany.jpg";
-const Italy = () => {
+const Germany = () => {
   return (
-    <LeaugeNew
+    <Leauge
       homeTeamId={"BUNDESLIGA_H"}
       awayTeamId={"BUNDESLIGA_A"}
       url={`${url}/Germany`}
       teams={bundesliga()}
       photo={photo}
+      name={"Germany"}
     />
   );
 };
 
-export default Italy;
+export default Germany;

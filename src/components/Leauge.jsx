@@ -1,27 +1,33 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
+import CircleLoader from "react-spinners/CircleLoader";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
 import Chart from "./chart";
+import CustomSelect from "./select";
+import CustomButton from "./useStyle";
 import { initPie, normalPredictVector } from "../dataManipulation/data";
-import Theming from "./useStyle";
+import { buttonPredictStyle } from "../dataManipulation/style/buttonStyle";
+import useGridStyles from "../dataManipulation/grid";
+import "../css/bootstrap/bootstrap-grid.css";
+import { css } from "@emotion/core";
 
 const Leauge = props => {
   // params : select {HomeTeam : id/name, AwayTeam : id/name}
-  const { homeTeamId, awayTeamId, url, teams, photo } = props;
+  const { homeTeamId, awayTeamId, url, teams, photo, name } = props;
   // data :  current data that presesnted by chartJS
   const [data, setData] = useState([1, 2, 1]);
   const [entireData, setEntireData] = useState(initPie());
   const [homeTeam, setHomeTeam] = useState("");
   const [awayTeam, setAwayTeam] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  let H_id = 1; //home team id --> when rendring Home teams with map()
-  let A_id = 1; //Away team id --> when rendring Away teams with map()
-
-  const handleHomeTeamChange = e => {
-    setHomeTeam(e.target.value);
-  };
-  const handleAwayTeamChange = e => {
-    setAwayTeam(e.target.value);
-  };
+  const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+  `;
 
   const handleDataChange = newData => {
     setData(newData);
@@ -32,88 +38,121 @@ const Leauge = props => {
   };
 
   async function handlePredict(homeTeam, awayTeam) {
-    const new_url = `${url}/${homeTeam}/${awayTeam}`;
-    const { data } = await axios.get(new_url);
+    const valid = validateTeamSelection(homeTeam, awayTeam);
+    if (valid === true) {
+      setLoading(true);
+      const new_url = `${url}/${homeTeam}/${awayTeam}`;
 
-    const predcitResult = normalPredictVector(
-      data.HomeTeam,
-      data.Draw,
-      data.AwayTeam
-    );
+      const result = await axios.get(new_url);
 
-    handleDataChange(predcitResult);
-    const updateDatasets = [...entireData.datasets];
-    updateDatasets[0].data = predcitResult;
-    handleEntireData({ labels: entireData.labels, datasets: updateDatasets });
+      const { data } = result;
+
+      const predcitResult = normalPredictVector(
+        data.HomeTeam,
+        data.Draw,
+        data.AwayTeam
+      );
+
+      handleDataChange(predcitResult);
+      const updateDatasets = [...entireData.datasets];
+      updateDatasets[0].data = predcitResult;
+      setLoading(false);
+      handleEntireData({
+        labels: entireData.labels,
+        datasets: updateDatasets
+      });
+    }
   }
 
+  const validateTeamSelection = (homeTeam, awayTeam) => {
+    console.log(homeTeam);
+    console.log(awayTeam);
+    if (homeTeam === "")
+      if (awayTeam === "") return toast("You must choose home & away teams.");
+      else {
+        setHomeTeam("");
+        return toast("You must choose home team.");
+      }
+    else if (awayTeam === "") {
+      setAwayTeam("");
+      return toast("You must choose away team.");
+    } else if (homeTeam === awayTeam) {
+      setHomeTeam("");
+      setAwayTeam("");
+      return toast("You must choose different teams.");
+    } else return true;
+  };
+
+  const setTeamsforpredict = (homeTeam, awayTeam) => {
+    setHomeTeam(homeTeam);
+    setAwayTeam(awayTeam);
+  };
+
+  const gridClasses = useGridStyles();
+  const buttonClasses = buttonPredictStyle();
+
   return (
-    <div className="site-section">
-      <div className="container">
-        <div className="row mb-5">
-          <div className="col-lg-4" data-aos="fade-up">
-            <div id="England" className="site-section-heading" />
-          </div>
-          <img
-            src={photo}
-            alt="PL"
-            className="img-fluid"
-            align="right"
-            style={{ marginTop: "2%" }}
-          />
-        </div>
+    <div className="container">
+      <div className={gridClasses.root}>
+        <Grid container spacing={0}>
+          <Grid item xs={4}>
+            <Paper className={gridClasses.paper} style={{ marginLeft: "50px" }}>
+              <img
+                style={{
+                  width: "1050px",
+                  height: "380px"
+                }}
+                src={photo}
+                alt={name}
+              />
+            </Paper>
+          </Grid>
+        </Grid>
+      </div>
 
-        <div className="row align-items-stretch program">
-          <div
-            className="col-12 border-top border-bottom py-5"
-            data-aos="fade"
-            data-aos-delay="200"
-          >
-            <div className="row align-items-stretch">
-              <div className="input-field col s12">
-                <select
-                  id={homeTeamId}
-                  name={homeTeamId}
-                  className="custom-select"
-                  onChange={handleHomeTeamChange}
-                >
-                  <option defaultValue="">Home Team</option>
-                  {teams.map(team => {
-                    return (
-                      <option key={H_id++} value={`${team}`}>
-                        {team}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
-              <div className="input-field col s12">
-                <select
-                  id={awayTeamId}
-                  name={awayTeamId}
-                  className="custom-select"
-                  onChange={handleAwayTeamChange}
-                >
-                  <option defaultValue="">Away Team</option>
-                  {teams.map(team => {
-                    return (
-                      <option key={A_id++} value={`${team}`}>
-                        {team}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
-              <Theming
-                // id="id"
-
-                name="Predict"
-                onClick={() => handlePredict(homeTeam, awayTeam)}
-              ></Theming>
+      <div className="row align-items-stretch program">
+        <div
+          className="col-12 border-top border-bottom py-5"
+          data-aos="fade"
+          data-aos-delay="200"
+        >
+          <div className="row align-items-stretch">
+            <div className="input-field col s2">
+              <Grid container spacing={0} justify="space-evenly">
+                <Grid item xs={4} sm={4}>
+                  <Paper className={buttonClasses.paper}>
+                    <CustomSelect
+                      homeTeamId={homeTeamId}
+                      awayTeamId={awayTeamId}
+                      teams={teams}
+                      setTeamsforpredict={setTeamsforpredict}
+                    />
+                  </Paper>
+                </Grid>
+                <Grid item xs={4} sm={4}>
+                  <Paper className={buttonClasses.paper}>
+                    <CustomButton
+                      name="Predict"
+                      onClick={() => handlePredict(homeTeam, awayTeam)}
+                      chosenStyle={buttonPredictStyle}
+                    ></CustomButton>
+                  </Paper>
+                </Grid>
+                <div className="sweet-loading">
+                  <CircleLoader
+                    css={override}
+                    sizeUnit={"px"}
+                    size={50}
+                    color={"#ff5733"}
+                    loading={loading}
+                  />
+                </div>
+              </Grid>
             </div>
           </div>
         </div>
       </div>
+
       <Chart
         entireData={entireData}
         predict={data}

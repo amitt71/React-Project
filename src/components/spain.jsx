@@ -1,16 +1,17 @@
 import React from "react";
-import LeaugeNew from "./LeaugeNew";
+import Leauge from "./Leauge";
 import { bbva } from "../dataManipulation/leaugesTeam";
 import { url } from "../dataManipulation/data";
 import photo from "../images/leauges/Spanish leauge.jpg";
 const Spain = () => {
   return (
-    <LeaugeNew
+    <Leauge
       homeTeamId={"BBVA_H"}
       awayTeamId={"BBVA_A"}
       url={`${url}/Spain`}
       teams={bbva()}
       photo={photo}
+      name={"Spain"}
     />
   );
 };
