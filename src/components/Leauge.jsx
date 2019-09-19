@@ -41,17 +41,19 @@ const Leauge = props => {
     const valid = validateTeamSelection(homeTeam, awayTeam);
     if (valid === true) {
       setLoading(true);
-      const new_url = `${url}/${homeTeam}/${awayTeam}`;
+      const new_url = `${url}/${homeTeam}/${awayTeam}/`;
 
       const result = await axios.get(new_url);
 
       const { data } = result;
 
-      const predcitResult = normalPredictVector(
-        data.HomeTeam,
-        data.Draw,
-        data.AwayTeam
-      );
+      // const predcitResult = normalPredictVector(
+      //   data.HomeTeam,
+      //   data.Draw,
+      //   data.AwayTeam
+      // );
+
+      const predcitResult = [data.HomeTeam, data.Draw, data.AwayTeam];
 
       handleDataChange(predcitResult);
       const updateDatasets = [...entireData.datasets];

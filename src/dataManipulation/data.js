@@ -16,5 +16,9 @@ export const url = `http://127.0.0.1:5000/predict`;
 
 export const normalPredictVector = (homePredict, drawPredict, awayPredict) => {
   const sum = homePredict + drawPredict + awayPredict;
-  return [homePredict / sum, drawPredict / sum, awayPredict / sum];
+  return [
+    parseFloat(homePredict / sum),
+    parseFloat(drawPredict / sum),
+    parseFloat(awayPredict / sum)
+  ];
 };

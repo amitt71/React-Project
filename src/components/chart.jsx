@@ -3,11 +3,11 @@ import { Pie } from "react-chartjs-2";
 
 const Chart = props => {
   const { entireData, predict } = props;
-  const [data] = useState(entireData);
+  console.log(entireData);
   const [localPredict, setLocalPredict] = useState(predict);
   const [draw, setRedarw] = useState(false);
 
-  let pieChart = React.useRef();
+  // let pieChart = React.useRef();
 
   useEffect(() => {
     const sholudDraw =
@@ -19,11 +19,11 @@ const Chart = props => {
   return (
     <Pie
       id="pie"
-      data={data}
+      data={entireData}
       redraw={draw}
       height={100}
       options={{ responsive: true }}
-      ref={pieChart}
+      // ref={pieChart}
     />
   );
 };

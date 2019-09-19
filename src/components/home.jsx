@@ -16,7 +16,7 @@ const Home = () => {
               data-aos="fade-up"
               data-aos-delay="10"
               style={{
-                "white-space": "pre-wrap"
+                whiteSpace: "pre-wrap"
               }}
             >
               {`Welcome to my React Application. 
