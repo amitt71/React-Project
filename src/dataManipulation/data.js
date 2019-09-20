@@ -12,7 +12,7 @@ export const initPie = () => {
   return data;
 };
 
-export const url = `http://127.0.0.1:5000/predict`;
+export const url = `https://thawing-wave-94414.herokuapp.com/predict`;
 
 export const normalPredictVector = (homePredict, drawPredict, awayPredict) => {
   const sum = homePredict + drawPredict + awayPredict;
