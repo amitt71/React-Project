@@ -19,8 +19,7 @@ const Home = () => {
                 whiteSpace: "pre-wrap"
               }}
             >
-              {`Welcome to my React Application. 
-               \nServer side not deployed yet.`}
+              Welcome to my React Application.
             </h1>
           </div>
         </div>
