@@ -13,12 +13,3 @@ export const initPie = () => {
 };
 
 export const url = `https://thawing-wave-94414.herokuapp.com/predict`;
-
-export const normalPredictVector = (homePredict, drawPredict, awayPredict) => {
-  const sum = homePredict + drawPredict + awayPredict;
-  return [
-    parseFloat(homePredict / sum),
-    parseFloat(drawPredict / sum),
-    parseFloat(awayPredict / sum)
-  ];
-};

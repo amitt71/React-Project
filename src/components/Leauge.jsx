@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import Chart from "./chart";
 import CustomSelect from "./select";
 import CustomButton from "./useStyle";
-import { initPie, normalPredictVector } from "../dataManipulation/data";
+import { initPie } from "../dataManipulation/data";
 import { buttonPredictStyle } from "../dataManipulation/style/buttonStyle";
 import useGridStyles from "../dataManipulation/grid";
 import "../css/bootstrap/bootstrap-grid.css";
@@ -46,12 +46,6 @@ const Leauge = props => {
       const result = await axios.get(new_url);
 
       const { data } = result;
-
-      // const predcitResult = normalPredictVector(
-      //   data.HomeTeam,
-      //   data.Draw,
-      //   data.AwayTeam
-      // );
 
       const predcitResult = [data.HomeTeam, data.Draw, data.AwayTeam];
 
