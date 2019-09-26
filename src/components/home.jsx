@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
-import Detalies from "./projectDetails";
 import "aos/dist/aos.css";
 
 const Home = () => {

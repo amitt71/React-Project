@@ -5,8 +5,8 @@ const Detalies = () => {
   return (
     <div>
       <Carousel
-        options={{ fullWidth: true, indicators: true }}
-        className="carousel"
+        options={{ fullWidth: false, indicators: true }}
+        className="white-text center"
       >
         <div className="red">
           <h2>First Panel</h2>

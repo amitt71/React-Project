@@ -19,6 +19,7 @@ function App() {
   useEffect(() => {
     AOS.init();
   });
+
   return (
     <Switch>
       <React.Fragment>

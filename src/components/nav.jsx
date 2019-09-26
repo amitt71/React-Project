@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Navbar, SideNavItem, SideNav } from "react-materialize";
+import { Navbar } from "react-materialize";
 import "../css/bootstrap/bootstrap.css";
 
 const Nav = () => {
@@ -10,8 +10,8 @@ const Nav = () => {
   };
 
   return (
-    <div className="nav-wrapper">
-      <div className="navbar-fixed">
+    <div className="navWrapper">
+      <div className="navbarFixed">
         <Navbar
           className="transparent black-text"
           activeStyle={activeStyle}
@@ -28,7 +28,7 @@ const Nav = () => {
           centerLogo
           alignLinks="left"
         >
-          <ul className="sidenav-trigger" id="mobile-demo">
+          <ul className="sidenavTrigger" id="mobileDemo">
             <li>
               <NavLink to="/home" activeStyle={activeStyle}>
                 Home
